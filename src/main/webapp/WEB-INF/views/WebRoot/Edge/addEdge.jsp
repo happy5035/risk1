@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-   <script type="text/javascript" src="<c:url value="/static/js/js/jquery-1.8.0.js"/>"></script> 
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script> 
      <script type="text/javascript"> 
 function cbt_local()
 {
@@ -84,7 +84,17 @@ $.ajax({
 	success: function(data){
 		$("#emersub").html(data);
 	}});
-}); 
+});
+$( "#Tab1" ).on("change","#subname",function(){         
+	 $.ajax({
+		type: "POST",
+		url: "findSubEmer?emername="+encodeURI(encodeURI($(this).val())),
+		cache: false,
+		async: false,
+		success: function(data){
+			$("#emersub1").html(data);
+		}}); 
+	}); 
 }); 
 
 //风险清单项 
@@ -99,8 +109,9 @@ var newRow = table.insertRow(table.rows.length);
 var newCel1 = newRow.insertCell(0);
 var newCel2 = newRow.insertCell(1);
 
-newCel1.innerHTML = "<select id='emername'><c:forEach var='item' items='${emergencylist}'><option value='${item.emername}'>${item.emername}</option></c:forEach></select>";
-newCel2.innerHTML = "<select id='emername'><c:forEach var='item' items='${emergencylist}'><option value='${item.emername}'>${item.emername}</option></c:forEach></select>";
+newCel1.innerHTML = "<select id='subname' ><c:forEach var='item' items='${emergencylist}'><option value='${item.emername}'>${item.emername}</option></c:forEach></select>"; 
+/* newCel1.innerHTML = "<input type='button' id='b1' value='click'>"; */
+newCel2.innerHTML = "<select id='subname1' ><c:forEach var='item' items='${emergencylist}'><option value='${item.emername}'>${item.emername}</option></c:forEach></select>";
 // newCel5.innerHTML = "<input type=\"radio\" name=\"disasterLevel"+i+"\" id=\"disasterLevel"+i+"\" title=\"disasterLevel"+i+"\" value=\"C\"">"; 
 i++;
 document.getElementById("length1").value = i;
@@ -203,7 +214,7 @@ i--;
      <tr class="tr2">
         <td class="tr1" align="middle">前一个项目</td>
         <td class="tr1" align="middle">后一个项目</td>
-        
+      </tr>
    </table>
    <input type="button" onclick="addRow('Tab1');"  value="增加子项目顺序"/>
    <input type=button value="删除子项目顺序"  onclick="tb_delete()" >
