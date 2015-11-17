@@ -52,7 +52,6 @@ public class LoginController {
 		request.getSession().setAttribute("username", users.getLogname());
 		String logname=users.getLogname();
 		modelmap.put("users", users);
-		
 		if (users.getLogname() == null || users.getLogname() == "") {
 			modelmap.put("sysMessge", "请登陆！");
 			return "WebRoot/login";

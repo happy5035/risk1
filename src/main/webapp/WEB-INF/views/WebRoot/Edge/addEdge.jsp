@@ -220,6 +220,9 @@ i--;
    <input type=button value="删除子项目顺序"  onclick="tb_delete()" >
    <input type=image src="/risk/static/images/pub/lzoa_pub_save.gif" width="67" height="19" align="middle" style="cursor:hand;border:0px ;a" ;  onClick="return cbt_local();  return false;">    <!-- "要填写该跳转的地方！！！！" -->
    <input type="hidden" id="length1"  name="length1" >
+   <input type="button" id="but1" value="text2">
+   <p class='p1'> hello</p>
+   <p class='p1'> hello</p>
    </center>   
 </form>
 <!-- <input type="hidden" id="originid" name="originid">
@@ -231,5 +234,11 @@ i--;
 <input type="hidden" id="axisx"  name="axisx" >
 <input type="hidden" id="axisy"  name="axisy" > -->
 </form> 
+<script type="text/javascript">
+	$( "#but1" ).click(function(){
+		$( ".p1" ).text("change");
+	})
+</script>
 </body>
+
 </html>
